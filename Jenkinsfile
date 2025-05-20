@@ -59,7 +59,7 @@ pipeline {
             steps {
                 script {
                     def nodePort = sh(
-                        script: "kubectl get svc my-app-service -o=jsonpath='{.spec.ports[0].nodePort}'",
+                        script: "kubectl get svc dev-automation -o=jsonpath='{.spec.ports[0].nodePort}'",
                             returnStdout: true
                         ).trim().replace("'", "")
 
