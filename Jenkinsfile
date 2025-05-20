@@ -55,5 +55,22 @@ pipeline {
                 }
             }
         }
-    }
+        stage('Show Endpoint') {
+            steps {
+                script {
+                    def nodePort = sh(
+                        script: "kubectl get svc my-app-service -o=jsonpath='{.spec.ports[0].nodePort}'",
+                            returnStdout: true
+                        ).trim().replace("'", "")
+
+                        def minikubeIP = sh(
+                            script: "minikube ip",
+                            returnStdout: true
+                        ).trim()
+
+                        echo "✅ App is accessible at: http://${minikubeIP}:${nodePort}"
+                    }
+                }
+            }
+        }
 }
