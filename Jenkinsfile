@@ -48,7 +48,7 @@ pipeline {
                     pCLrK48vn5j4iMKaBY9kWoH4WWcmHY9a0D9tyUhNbT1KnBewtGm9ifO+/46zyjmT
                     +Rxikh1ySan8yLLmbPxoBtlGxLZAYwQ5M9ZbwPmpHYkXwc6K01x4nXJ2Be82+6uy
                     KTmkNzPaNorN0orKOZ4isc7QKFj9Z3w1yGC06INe5ZTgr+gz9g==
-                    -----END CERTIFICATE-----''', serverUrl: 'https://127.0.0.1:59981') {
+                    -----END CERTIFICATE-----''', credentialsId: 'kubeconfig', serverUrl: 'https://127.0.0.1:59981') {
                         sh 'kubectl apply -f k8s-deployment.yaml'
                         sh 'kubectl apply -f k8s-service.yaml'
                     }
